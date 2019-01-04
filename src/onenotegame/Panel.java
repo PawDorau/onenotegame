@@ -104,7 +104,7 @@ public class Panel extends JPanel implements Runnable,KeyListener {
   protected void paintComponent(Graphics g) {
 
     super.paintComponent(g);
-        g.drawImage(panelBG, 0, 0, null);
+        g.drawImage(Images.panelbg, 0, 0, null);
 }
 
     @Override
