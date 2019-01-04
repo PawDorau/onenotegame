@@ -18,8 +18,8 @@ import static onenotegame.Task.Value.*;
  */
 public class Note {
     
-    public static ArrayList<Note>NoteList = new ArrayList<Note>(100);
-    int id =0, noteX=0, noteY=0,xCoords=0, yCoords=0;;
+    public static ArrayList<Note>NoteList = new ArrayList<Note>();
+    int id =0, noteX=0, noteY=0,xCoords=Panel.pWIDTH, yCoords=Panel.pHEIGHT/2;;
     BufferedImage noteImg;
     Task.Color noteColor;
     Task.Value noteValue;
@@ -56,27 +56,27 @@ public class Note {
         
         //przypis kolor
         if((randomNum>0 && randomNum<5)&&(randomNum>20 && randomNum<25)){
-        noteColor=CZARNY; }
+        noteColor=CZARNA; }
         else if((randomNum>4 && randomNum<9)&&(randomNum>24 && randomNum<29)){
-        noteColor = CZERWONY; }
+        noteColor = CZERWONA; }
         else if((randomNum>8 && randomNum<13)&&(randomNum>28 && randomNum<33)){
-        noteColor = NIEBIESKI; }
+        noteColor = NIEBIESKA; }
         else if((randomNum>12 && randomNum<17)&&(randomNum>32 && randomNum<37)){
-        noteColor = POMARAŃCZOWY; }
+        noteColor = POMARAŃCZOWA; }
         else if((randomNum>16 && randomNum<21)&&(randomNum>36 && randomNum<41)){
-        noteColor = ZIELONY; }
+        noteColor = ZIELONA; }
         
         //przypis wartosc
         if((randomNum>0 && randomNum<5)&&(randomNum>20 && randomNum<25)){
-        noteColor=CZARNY; }
+        noteColor=CZARNA; }
         else if((randomNum>4 && randomNum<9)&&(randomNum>24 && randomNum<29)){
-        noteColor = CZERWONY; }
+        noteColor = CZERWONA; }
         else if((randomNum>8 && randomNum<13)&&(randomNum>28 && randomNum<33)){
-        noteColor = NIEBIESKI; }
+        noteColor = NIEBIESKA; }
         else if((randomNum>12 && randomNum<17)&&(randomNum>32 && randomNum<37)){
-        noteColor = POMARAŃCZOWY; }
+        noteColor = POMARAŃCZOWA; }
         else if((randomNum>16 && randomNum<21)&&(randomNum>36 && randomNum<41)){
-        noteColor = ZIELONY; }
+        noteColor = ZIELONA; }
         
         if((randomNum==1 || randomNum-4==1 || randomNum-8==1 || randomNum-12==1)){
         noteValue=CAŁANUTA; }

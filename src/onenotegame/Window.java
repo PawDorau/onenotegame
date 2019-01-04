@@ -15,9 +15,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Window extends Canvas{
+    Panel panel;
+    JFrame window;
     
     public  Window(int WIDTH ,int HEIGHT, String title){
-        JFrame window = new JFrame(title);
+        window = new JFrame(title);
 
         window.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.setMaximumSize(new Dimension(WIDTH, HEIGHT));
@@ -27,53 +29,55 @@ public class Window extends Canvas{
         window.setLocationRelativeTo(null);
         window.setLayout(new BorderLayout());
         
-        
-        Panel panel = new Panel( WIDTH-100,HEIGHT-300 );
-        panel.setPreferredSize(new Dimension(WIDTH-100, HEIGHT-300));
-        panel.setBounds(50, 50, WIDTH-100, HEIGHT-300);
-        panel.setBorder(BorderFactory.createLineBorder(Color.black));
-        window.getContentPane().add(panel);
-        
         //panel menu
         JPanel menu = new JPanel();
-        menu.setBounds(50, 510, WIDTH-100, 200);
-        window.add(menu);
+        menu.setPreferredSize(new Dimension(WIDTH-100, 200));
+        window.add(menu, BorderLayout.SOUTH);
         menu.setLayout(new FlowLayout());
         ((FlowLayout)menu.getLayout()).setHgap(75);
-        menu.setSize(WIDTH-100, 200);
+        ((FlowLayout)menu.getLayout()).setVgap(75);
+        
         
         //pole z zadaniem
-        JTextField task = new JTextField("zadanie");
-        task.setBounds(50, 623, 300, 75);
-        menu.add(task);
+        Task task = new Task();
+        menu.add(task, FlowLayout.LEFT);
+        
         
         //wynik
         JTextField Score = new JTextField("Wynik");
-        Score.setBounds(500, 623, 150, 75);
-        menu.add(Score);
+        Score.setPreferredSize(new Dimension(150,75));
+        menu.add(Score, FlowLayout.CENTER);
+        Score.setHorizontalAlignment(JTextField.CENTER);
         
         //samouczek
-        //Icon hicon = new ImageIcon(getClass().getResource("hicon.png")); //dodanie wyglądu przycisku
-        //JButton Help = new JButton("POMOC",hicon);
-        JButton help = new JButton("POMOC");
-        help.setBounds(824, 623, 150, 75);
-        menu.add(help);
+        JButton Help = new JButton("POMOC");
+        Help.setPreferredSize(new Dimension(150,75));
+        menu.add(Help, FlowLayout.RIGHT);
+        Help.setIcon(new ImageIcon("C:\\Users\\pdora\\Documents\\NetBeansProjects\\onenotegame\\src\\grafiki\\hicon2.png"));
+        Help.setBackground(Color.WHITE);
         ClickEvent e = new ClickEvent();
-        help.addActionListener(e);
+        Help.addActionListener(e);
+        
+        //panel rozgrywki
+        panel = new Panel(task);
+        panel.setBorder(BorderFactory.createLineBorder(Color.black));
+        window.getContentPane().add(panel,BorderLayout.CENTER );
         
         window.pack();
         window.setVisible(true);
 
-        
     }
     
      //samouczek event
     public class ClickEvent implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            //wyświtlenie samouczka
+           //wyświtlenie samouczka
+           panel.stop(); 
            
-           //panel.stop(); 
+           Guide guide = new Guide();
+           window.add(guide);
+           window.setVisible(true);
         }
 }
 }
