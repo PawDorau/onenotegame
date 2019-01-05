@@ -24,12 +24,14 @@ public class Task extends JTextField {
     
     public Task(){
         
+        Font font = new Font("SansSerif", Font.BOLD, 17);
         this.setText("");
         this.setPreferredSize(new Dimension(300,75));
         this.setEditable(false);
         this.setBackground(java.awt.Color.WHITE);
         this.setHorizontalAlignment(JTextField.CENTER);
-        
+        this.setBorder(BorderFactory.createLineBorder(java.awt.Color.black));
+        this.setFont(font);
         
         
         ColorList.add(Color.CZERWONA);

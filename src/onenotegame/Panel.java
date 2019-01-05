@@ -7,6 +7,7 @@ package onenotegame;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
 import javax.swing.*;
 import static onenotegame.Note.*;
 
@@ -18,12 +19,14 @@ public class Panel extends JPanel implements Runnable,KeyListener {
     
     public static final int pWIDTH  = 924;
     public static final int pHEIGHT = 418;
-    Image panelBG;
     private Thread thread;
     public static boolean running = false;
     private int FPS = 60;
     private long targetTime = 1000/FPS;
-    int speed = 3;
+    BufferedImage objImg;
+    public Point objPoint; 
+    int imgH, imgW, speed = 3;
+    boolean objClicked;
     
     public Panel(Task task){
         
@@ -34,7 +37,9 @@ public class Panel extends JPanel implements Runnable,KeyListener {
             this.setBorder(BorderFactory.createEmptyBorder());
             this.setVisible(true);
             this.addKeyListener(this);
+       
             task.setText(Task.genTask());
+            
             //start();
 
     }
@@ -90,8 +95,12 @@ public class Panel extends JPanel implements Runnable,KeyListener {
     b.drawImage(note.noteImg ,0 , 0, null);
     
     note.xCoords = note.xCoords - speed;
+    objPoint = new Point(note.xCoords,note.yCoords);
+    imgW = note.noteX;
+    imgH = note.noteY;
+    objClicked = note.noteClicked;
     
-    if(note.xCoords==0){
+    if((note.xCoords==0)&&(note.noteClicked=true)){
     b.dispose(); 
     NoteList.remove(note);
     }
@@ -125,6 +134,20 @@ public class Panel extends JPanel implements Runnable,KeyListener {
     public void keyReleased(KeyEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void mouseClicked(MouseEvent e) {
+    if ( objImg!= null && objPoint != null) {
+    Point me = e.getPoint();
+    Rectangle bounds = new Rectangle(objPoint, new Dimension(imgW, imgH));
+    if (bounds.contains(me)) {
+    System.out.println("I was clicked!");
+    objClicked = true;
+            }
+        }
+    }
+
+       
+    
 }
     
 

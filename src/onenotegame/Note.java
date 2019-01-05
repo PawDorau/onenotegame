@@ -46,8 +46,9 @@ public class Note {
         int min = 1 , max=40;
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
-        noteImg = ImageIO.read(getClass().getResource("grafiki.notes/note"+randomNum+".png"));
-
+        //noteImg = ImageIO.read(new File("note"+randomNum+".png"));
+        noteImg = ImageIO.read(getClass().getResource("grafiki.notes/panelbg"+randomNum+".png"));
+        //JLabel noteImage = new JLabel(new ImageIcon("note"+randomNum+".png"));
         
         //pobierz wymiary
         noteX = noteImg.getHeight();

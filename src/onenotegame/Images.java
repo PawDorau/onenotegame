@@ -22,7 +22,7 @@ public class Images {
         
     try {
             helpbg = ImageIO.read(getClass().getResourceAsStream("grafiki/hnuty1.png"));
-            panelbg = ImageIO.read(getClass().getResource("grafiki\\panelbg.png"));
+            panelbg = ImageIO.read(getClass().getResource("grafiki/panelbg.png"));
 
 
         } catch (IOException e) {

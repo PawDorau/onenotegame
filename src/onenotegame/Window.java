@@ -44,10 +44,15 @@ public class Window extends Canvas{
         
         
         //wynik
+        Font font = new Font("SansSerif", Font.BOLD, 20);
         JTextField Score = new JTextField("Wynik");
         Score.setPreferredSize(new Dimension(150,75));
         menu.add(Score, FlowLayout.CENTER);
         Score.setHorizontalAlignment(JTextField.CENTER);
+        Score.setBorder(BorderFactory.createLineBorder(java.awt.Color.BLACK));
+        Score.setFont(font);
+        Score.setEditable(false);
+        Score.setBackground(Color.WHITE);
         
         //samouczek
         JButton Help = new JButton("POMOC");
@@ -55,6 +60,7 @@ public class Window extends Canvas{
         menu.add(Help, FlowLayout.RIGHT);
         Help.setIcon(new ImageIcon("C:\\Users\\pdora\\Documents\\NetBeansProjects\\onenotegame\\src\\grafiki\\hicon2.png"));
         Help.setBackground(Color.WHITE);
+        Help.setBorder(BorderFactory.createLineBorder(java.awt.Color.BLACK));
         ClickEvent e = new ClickEvent();
         Help.addActionListener(e);
         
